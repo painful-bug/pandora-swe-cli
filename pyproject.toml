@@ -1,0 +1,27 @@
+[project]
+name = "coding-agent"
+version = "0.1.0"
+description = "A Claude Code-like terminal coding agent built with LangChain DeepAgents"
+requires-python = ">=3.11"
+dependencies = [
+    "deepagents>=0.1.0",
+    "langchain[groq]>=0.4.0",
+    "langchain[anthropic]>=0.4.0",
+    "langchain[google-genai]>=0.4.0",
+    "langchain-ollama>=0.3.0",
+    "langchain-openai>=0.3.0",
+    "langgraph>=0.4.0",
+    "rich>=13.0",
+    "prompt_toolkit>=3.0",
+    "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+search = ["tavily-python>=0.5.0"]
+dev = ["pytest>=8.0", "pytest-mock>=3.14"]
+
+[project.scripts]
+coding-agent = "src.main:main"
+
+[tool.pytest.ini_options]
+testpaths = ["test"]
