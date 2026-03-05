@@ -217,18 +217,19 @@ def run_agent_streaming(agent, config: dict, user_input: str):
                 )
                 input_val = {"messages": [{"role": "user", "content": error_feedback}]}
 
-            with Status("[dim]Thinking...[/dim]", console=console, spinner="dots"):
-                # Start stream — spinner disappears on first output
-                events = list(_collect_initial_events(agent, config, input_val))
+            streamed_any_output = False
+            with Status("[dim]Thinking...[/dim]", console=console, spinner="dots") as status:
+                for event_type, event_data in _collect_initial_events(agent, config, input_val):
+                    if not streamed_any_output:
+                        status.stop()
+                        streamed_any_output = True
 
-            # Process all collected events
-            for event_type, event_data in events:
-                if event_type == "hitl":
-                    intr, agent_ref, config_ref = event_data
-                    _handle_interrupt(intr, agent_ref, config_ref)
-                elif event_type == "node":
-                    node_name, node_data, metadata = event_data
-                    _process_node_event(node_name, node_data, metadata)
+                    if event_type == "hitl":
+                        intr, agent_ref, config_ref = event_data
+                        _handle_interrupt(intr, agent_ref, config_ref)
+                    elif event_type == "node":
+                        node_name, node_data, metadata = event_data
+                        _process_node_event(node_name, node_data, metadata)
 
             return  # Success — exit retry loop
 
