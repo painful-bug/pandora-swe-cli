@@ -1,6 +1,6 @@
-# Coding Agent
+# Pandora SWE CLI
 
-A Claude Code-like terminal coding agent built with [LangChain DeepAgents](https://docs.langchain.com/oss/python/deepagents/overview).
+A Claude Code-like terminal SWE agent built with [LangChain DeepAgents](https://docs.langchain.com/oss/python/deepagents/overview).
 
 ## Features
 
@@ -118,3 +118,6 @@ coding_agent/
 pip install -e ".[dev]"
 pytest test/ -v
 ```
+
+
+this is the README.md of my repo.. add a section here for inviting other developers to contribute and also mention appropriately that this is a work in progress project
