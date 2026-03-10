@@ -1,6 +1,6 @@
 # Pandora SWE CLI
 
-A Claude Code-like terminal SWE agent built with [LangChain DeepAgents](https://docs.langchain.com/oss/python/deepagents/overview).
+A terminal based SWE agent built with [LangChain DeepAgents](https://docs.langchain.com/oss/python/deepagents/overview).
 
 > **Project Status:** This project is currently a **work in progress (WIP)**. The architecture and features are evolving rapidly. Expect breaking changes while core capabilities are being stabilized.
 
